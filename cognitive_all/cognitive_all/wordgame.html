@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Game</title>
+    <style>
+        body {
+            background-image: url('https://media.istockphoto.com/id/850935974/photo/wooden-english-letters-background.webp?b=1&s=170667a&w=0&k=20&c=_5VFNYDSbZ7-QidQqxZk0hzR6nJVTMo7Tzz6J7aySYs=');
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 50px;
+        }
+
+        #wordDisplay {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        #submitButton {
+            background-color: blue;
+            color: black;
+            margin-top: 20px;
+            align-items: center;
+            width: 120px;
+            height: 40px;
+            border-radius: 2px;
+        }
+
+        #voiceButton {
+            background-color: green;
+            color: white;
+            margin-top: 20px;
+            align-items: center;
+            width: 120px;
+            height: 40px;
+            border-radius: 2px;
+        }
+
+        #nextbtn {
+            background-color: blue;
+            color: black;
+            margin-top: 20px;
+            align-items: center;
+            width: 120px;
+            height: 40px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="font-size:60px;">Word Game</h1>
+        <div id="wordDisplay"></div>
+        <div style="size: 50px;">
+            <label style="font-size: 30px;">Enter the words: </label><br><br>
+            <input type="text" id="userInput" placeholder="Enter the word displayed" size="40">
+            <br><br>
+            <button id="submitButton"><b>Submit</b></button>
+            <button id="voiceButton"><b>Voice Input</b></button>
+            <button id="nextbtn" onclick="window.location.href='cardinstruct.html'"><b>Next</b></button>
+        </div>
+        <p id="score"></p>
+    </div>
+    <script>
+        const wordList = [
+            "Elephant", "Sunshine", "Bicycle", "Ocean", "Laptop", "Chocolate", "Mountain", "Guitar", "Butterfly",
+            "Pineapple", "Moonlight", "Adventure", "Umbrella", "Rainbow", "Backpack", "Library", "Dragon",
+            "Watermelon", "Pillow", "Telescope", "Whisper", "Cookie", "Starfish", "Fireworks", "Basketball",
+            "Keychain", "Marshmallow", "Tornado", "Snowflake", "Calculator", "Lighthouse", "Jellyfish", "Treasure",
+            "Rollercoaster", "Pencil", "Envelope", "Trampoline", "Seashell", "Cupcake", "Helicopter", "Puzzle",
+            "Kangaroo", "Thunderstorm", "Parrot", "Bubblegum", "Telescope", "Compass", "Dragonfly", "Waterfall", "Coconut"
+        ];
+
+        let currentWordIndex = 0;
+        let displayedWords = [];
+
+        function displayNextWord() {
+            if (currentWordIndex < 3) {
+                const newWord = wordList[currentWordIndex].toLowerCase();
+                wordDisplay.textContent = newWord;
+                displayedWords.push(newWord);
+                currentWordIndex++;
+                setTimeout(clearWord, 3000);
+            }
+        }
+
+        function clearWord() {
+            wordDisplay.textContent = "";
+            if (currentWordIndex < wordList.length && currentWordIndex < 3) {
+                setTimeout(displayNextWord, 1000);
+            }
+        }
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        shuffle(wordList);
+
+        displayNextWord();
+
+        const submitButton = document.getElementById("submitButton");
+        const voiceButton = document.getElementById("voiceButton");
+        submitButton.addEventListener("click", function () {
+            const userInput = document.getElementById("userInput").value.trim().toLowerCase();
+            const userWords = userInput.split(" ");
+            count(userWords);
+        });
+
+        voiceButton.addEventListener("click", function () {
+            startSpeechRecognition();
+        });
+
+        function startSpeechRecognition() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.onresult = function (event) {
+                const voiceInput = event.results[0][0].transcript.trim().toLowerCase();
+                document.getElementById("userInput").value = voiceInput;
+            };
+            recognition.start();
+        }
+
+        function count(userWords) {
+            let score = 0;
+            for (let i = 0; i < 3; i++) {
+                if (displayedWords[i] === userWords[i]) {
+                    score++;
+                }
+            }
+            const accuracy = (score / 3) * 100;
+            const scoreDisplay = document.getElementById("score");
+            scoreDisplay.textContent = `Accuracy: ${accuracy}%`;
+
+            const answers = localStorage.getItem("X-cognitive")
+
+            if (!answers) {
+                window.location.href = "questions.html"
+            } else {
+                localStorage.setItem("X-cognitive", JSON.stringify({
+                    ...JSON.parse(answers),
+                    wordgame_avg: `${accuracy}`
+                }))
+            }
+        }
+
+    </script>
+</body>
+
+</html>

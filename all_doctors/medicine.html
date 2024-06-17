@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicines</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product-card {
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: black;
+        }
+
+        .product-card img {
+            width: 150px;
+            /* Fixed width */
+            height: 150px;
+            /* Fixed height */
+            object-fit: cover;
+            /* Ensures the image covers the area without distortion */
+            display: block;
+            margin: 0 auto 10px auto;
+            /* Centers the image and adds margin below */
+        }
+
+        .product-card h2 {
+            margin-top: 0;
+        }
+
+        .product-card button {
+            background-color: purple;
+            color: white;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .product-card button:hover {
+            background-color: black;
+            color: #fff;
+        }
+
+        #selected-products {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        #selected-products-table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #selected-products-table th,
+        #selected-products-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #selected-products-table th {
+            background-color: #f2f2f2;
+        }
+
+        #total-amount {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        #buy-now-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: purple;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #buy-now-button:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgba(197, 36, 205, 0.2)">
+    <p>
+        <center style="font-size: 40px; font-family: 'Sans Serif Collection';color: purple"><b>Pharmacy Essentials: Your
+                Guide To General Medicine</b></center>
+    </p>
+    <hr style="border:2px solid #000;">
+    <div class="container">
+        <div id="product-list" class="product-list"></div>
+        <h2 id="selected-products" style="color: purple">Selected Products:</h2>
+        <table id="selected-products-table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price (₹)</th>
+                </tr>
+            </thead>
+            <tbody id="selected-products-table-body" style="background-color: whitesmoke"></tbody>
+        </table>
+        <div id="total-amount" style="color: purple">Total Amount: ₹0.00</div>
+        <button id="buy-now-button" onclick="window.location.href='https://www.apollopharmacy.in/'">Buy Now</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const products = [
+                { name: 'Dolo-650', price: 33, image: 'https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=900/app/images/products/sliding_image/526755a.jpg?ts=1690813819' },
+                { name: 'Benadryl', price: 155, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNT03e3wie9w6LeV4G_OKm0HVBu0jBL3QHZg&s' },
+                { name: 'Crocin-650', price: 33, image: 'https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/9928cf97b5ed4dcfa8544213d887635b.jpg' },
+                { name: 'Cofsils Naturals', price: 90, image: 'https://cdn01.pharmeasy.in/dam/products_otc/I44532/cofsils-naturals-cough-syrup-bottle-100-ml-3-1669711055.jpg' },
+                { name: 'Volini Pain Relief', price: 70, image: 'https://cdn01.pharmeasy.in/dam/products_otc/183162/volini-pain-relief-spray-bottle-of-15g-6.1-1712726728.jpg' },
+                { name: 'Crocin Pain Relief', price: 72, image: 'https://cdn01.pharmeasy.in/dam/products_otc/269415/crocin-pain-relief-strip-of-15-tablets-1-1701935215.jpg?dim=700x0&dpr=1&q=100' },
+                { name: 'New Coldact', price: 168, image: 'https://cdn01.pharmeasy.in/dam/products/N82100/new-coldact-capsule-20s-1-1641301693.jpg' },
+                { name: 'Sumo Cold Strip of 10 Tablets', price: 45, image: 'https://cdn01.pharmeasy.in/dam/products/195602/sumo-cold-strip-of-10-tablets-2-1641536119.jpg' },
+                { name: 'Vicks Vaporub', price: 109, image: 'https://cdn01.pharmeasy.in/dam/products_otc/181135/vicks-vaporub-25ml-relief-from-cold-cough-headache-and-body-pain-2-1677525513.jpg' },
+                { name: 'Dr. Vaidyas Pain Relief ', price: 250, image: 'https://cdn01.pharmeasy.in/dam/products_otc/V15977/dr-vaidyas-pain-relief-30-capsules-2-1687175236.jpg' },
+                { name: 'Liveasy Digital Thermometer', price: 159, image: 'https://cdn01.pharmeasy.in/dam/products_otc/D72460/liveasy-digital-thermometer-2-1710156303.jpg?dim=700x0&dpr=1&q=100' },
+                { name: 'Immunity Booster', price: 350, image: 'https://cdn01.pharmeasy.in/dam/products_otc/V84017/immunity-boost-2-1710318237.jpg?dim=700x0&dpr=1&q=100' }
+            ];
+
+            const productList = document.getElementById('product-list');
+            const totalAmountElement = document.getElementById('total-amount');
+            const selectedProductsTableBody = document.getElementById('selected-products-table-body');
+            let totalAmount = 0;
+            const selectedProducts = [];
+
+            function updateTotalAmount() {
+                totalAmountElement.textContent = `Total Amount: ₹${totalAmount.toFixed(2)}`;
+            }
+
+            function updateSelectedProductsTable() {
+                selectedProductsTableBody.innerHTML = '';
+                selectedProducts.forEach(product => {
+                    const row = document.createElement('tr');
+                    const nameCell = document.createElement('td');
+                    nameCell.textContent = product.name;
+                    const priceCell = document.createElement('td');
+                    priceCell.textContent = `₹${product.price.toFixed(2)}`;
+                    row.appendChild(nameCell);
+                    row.appendChild(priceCell);
+                    selectedProductsTableBody.appendChild(row);
+                });
+            }
+
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+
+                const image = document.createElement('img');
+                image.src = product.image;
+                image.alt = product.name;
+
+                const productName = document.createElement('h2');
+                productName.textContent = product.name;
+
+                const price = document.createElement('p');
+                price.textContent = `₹${product.price.toFixed(2)}`;
+
+                const addToCartButton = document.createElement('button');
+                addToCartButton.textContent = 'Add to Cart';
+                addToCartButton.addEventListener('click', function () {
+                    console.log(`Added ${product.name} to cart`);
+                    totalAmount += product.price;
+                    selectedProducts.push(product);
+                    updateTotalAmount();
+                    updateSelectedProductsTable();
+                });
+
+                productCard.appendChild(image);
+                productCard.appendChild(productName);
+                productCard.appendChild(price);
+                productCard.appendChild(addToCartButton);
+
+                productList.appendChild(productCard);
+            });
+
+            const buyNowButton = document.getElementById('buy-now-button');
+            buyNowButton.addEventListener('click', function () {
+                console.log('Buying all selected products...');
+                selectedProducts.length = 0;
+                totalAmount = 0;
+                updateSelectedProductsTable();
+                updateTotalAmount();
+            });
+        });
+    </script>
+</body>
+
+</html>

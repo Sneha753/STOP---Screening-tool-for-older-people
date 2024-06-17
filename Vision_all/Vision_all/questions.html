@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognitive Impairment Symptom Questionnaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b3e0e5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color:#101764
+        }
+        
+        .question {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #101764;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0f185c;
+        }
+        
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Visual Screening Questionnaires</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p>1. Do you ever feel that problems with your vision make it difficult for you to do the things you would
+                    like
+                    to do?</p>
+                <label><input type="radio" name="q1" value="yes"> Yes</label>
+                <label><input type="radio" name="q1" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>2. Can you see the large headings on newspaper?</p>
+                <label><input type="radio" name="q2" value="yes"> Yes</label>
+                <label><input type="radio" name="q2" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>3. Can you see the numbers and names on the telephone directory?</p>
+                <label><input type="radio" name="q3" value="yes"> Yes</label>
+                <label><input type="radio" name="q3" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>4. Is it difficult to watch TV, play cards, and do sewing or any similar kind of
+                    activity?</p>
+                <label><input type="radio" name="q4" value="yes"> Yes</label>
+                <label><input type="radio" name="q4" value="no"> No</label>
+            </div>
+            <div class="question">
+                <p>5. Can you see the labels on the medicine bottles?</p>
+                <label><input type="radio" name="q5" value="yes"> Yes</label>
+                <label><input type="radio" name="q5" value="no"> No</label>
+            </div>
+            <button type="button" onclick="checkAnswers()">Submit</button><br>
+            <button type="button" onclick="next()">Next</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script>
+        const correctAnswers = {
+            q1: "no",
+            q2: "no",
+            q3: "no",
+            q4: "no",
+            q5: "no"
+        };
+
+        let accuracy = null;
+        
+        function checkAnswers() {
+            const form = document.getElementById('quizForm');
+            const resultDiv = document.getElementById('result');
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+        
+            for (let i = 1; i <= totalQuestions; i++) {
+                const userAnswer = form[`q${i}`].value;
+                if (userAnswer === correctAnswers[`q${i}`]) {
+                    score++;
+                }
+            }
+        
+            accuracy = (score / totalQuestions) * 100;
+            resultDiv.innerHTML = `Your accuracy is ${accuracy.toFixed(2)}%.`;
+        }
+
+        function next(){
+            localStorage.setItem("X-vision", JSON.stringify({
+                quesions_avg: accuracy ? accuracy.toFixed(2) : 0
+            }))
+            
+            window.location.href = 'sightinstruct.html';
+        }
+
+
+
+        
+    </script>
+</body>
+</html>

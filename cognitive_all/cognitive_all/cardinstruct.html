@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipcard Test Instructions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .instructions {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .instructions ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .agreement {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        button {
+            background-color: #241b85;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin: 10px 0;
+        }
+
+        button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+
+        button:hover:enabled {
+            background-color: #1e2089;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Instructions for the Flipcard Test</h1>
+        <div class="instructions">
+            <p>Welcome to the Flipcard test. Please read the following instructions carefully before starting the test:
+            </p>
+            <ul>
+                <li>This is a simple Flip card game to check Cognitive capacity.</li>
+                <li>Flip a card and match it with its pair.</li>
+                <li>Continue flipping cards and try to remember their positions to find matching pairs. Focus on
+                    remembering card positions and matching pairs.</li>
+                <li>Try to match all pairs in the fewest moves possible for a higher accuracy score.</li>
+                <li>Click on the 'Start Test' button when you are ready to begin.</li>
+            </ul>
+        </div>
+        <div class="agreement">
+            <input type="checkbox" id="agreeCheckbox">
+            <label for="agreeCheckbox">I agree to the terms and conditions</label>
+        </div>
+        <button id="startBtn" disabled>Start Test</button>
+        <button id="readInstructionsBtn">🔊</button>
+    </div>
+    <script>
+        const agreeCheckbox = document.getElementById('agreeCheckbox');
+        const startBtn = document.getElementById('startBtn');
+        const readInstructionsBtn = document.getElementById('readInstructionsBtn');
+
+        agreeCheckbox.addEventListener('change', function () {
+            startBtn.disabled = !this.checked;
+        });
+
+        startBtn.addEventListener('click', function () {
+            speechSynthesis.cancel();  // Stop any ongoing speech
+            window.location.href = 'memory_card.html';
+        });
+
+        readInstructionsBtn.addEventListener('click', function () {
+            const instructionsText = `Instructions, Welcome to the Flipcard test. Please read the following instructions carefully before starting the test:
+            Flip a card and match it with its pair.
+            Continue flipping cards and try to remember their positions to find matching pairs. Focus on
+                    remembering card positions and matching pairs.
+                    Try to match all pairs in the fewest moves possible for a higher accuracy score.
+
+    Click on the 'Start Test' button when you are ready to begin.`;
+
+            const speech = new SpeechSynthesisUtterance(instructionsText);
+            speechSynthesis.speak(speech);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results</title>
+  <style>
+    body {
+      background: linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%);
+      background-repeat: no-repeat;
+      height: 100vh;
+      background-size: cover;
+
+    }
+
+    h1 {
+
+      text-align: center;
+      padding: 2%;
+      margin-left: 20%;
+      margin-right: 20%;
+      border: 2px solid #000;
+      color: rgb(18, 18, 77);
+      font-size: 40px;
+    }
+
+    #A1 {
+      text-align: center;
+      padding: 2%;
+      margin-left: 20%;
+      margin-right: 20%;
+      border: 2px solid #000;
+
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 30px
+    }
+
+    #msg {
+      font-size: 40px;
+      color: red;
+    }
+
+    #homebtn {
+      background-color: rgb(26, 26, 96);
+      color: white;
+      font-size: 30px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Vision Test Results</h1>
+  <div id="A1">
+    <p id="result"></p>
+    <p id="msg"></p>
+  </div>
+  <br>
+  <br>
+  <div class="homebtn" align="center">
+    <button id="homebtn" onclick="window.location.href=`main2.html`">Home</button>
+  </div>
+  <script>
+    const answers = localStorage.getItem("X-vision")
+    if (!answers) {
+      window.location.href = "questions.html"
+    } else {
+      const { quesions_avg, sight_avg, level12_avg, snell2_avg, colorvision_avg } = JSON.parse(answers)
+
+      let sum = Number(quesions_avg ? quesions_avg : 0) + Number(sight_avg ? sight_avg : 0) + Number(level12_avg ? level12_avg : 0) + Number(snell2_avg ? snell2_avg : 0) + Number(colorvision_avg ? colorvision_avg : 0)
+
+      let avg = sum / 5
+
+
+      document.getElementById("result").innerText = `Your Average Percentage:${avg.toFixed(2)}%`
+      if (avg < 25) {
+        document.getElementById("msg").innerHTML = "Your vision is low, You are immediately advised to consult doctor!"
+      }
+      else if (avg < 50) {
+        document.getElementById("msg").innerHTML = "Your vision is fyn but recommended to consult doctor once."
+      }
+
+      else if (avg < 75) {
+        document.getElementById("msg").innerHTML = "Your vision level is good, keep testing your eyes frequently"
+      }
+      else {
+        document.getElementById("msg").innerHTML = "Your vision is  excellent"
+      }
+
+    }
+  </script>
+</body>
+
+</html>

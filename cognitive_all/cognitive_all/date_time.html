@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Test</title>
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    input[type="text"],
+    button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      font-size: 16px;
+    }
+
+    button {
+      cursor: pointer;
+      background: rgb(33, 89, 108);
+      color: white;
+    }
+
+
+    p {
+      font-size: 20px;
+      padding-left: 300px;
+    }
+
+    p#error {
+      color: red;
+    }
+  </style>
+</head>
+
+<body style="background-image: url('image/clock1.jpg'); background-repeat:no-repeat; background-size:cover">
+  <div class="container">
+    <h1
+      style="color: rgb(28, 88, 108); font-size:50px; font-family:'Times New Roman', Times, serif; font-weight:bolder; padding-left: 400px; padding-top:120px">
+      Memory Test</h1>
+    <p>Enter the current date and time in the format YYYY-MM-DD HH:MM:</p>
+    <p>Ex: 2000-01-2 14:00</p>
+    <input type="text" id="dateTimeInput" placeholder="YYYY-MM-DD    HH:MM" style="margin-left:400px" ;">
+    <button onclick="checkMemory()">Check Memory</button>
+    <button onclick="window.location.href='/STOP_APP/results.html'" id="resultBtn"
+      style="visibility: hidden;">Result</button>
+    <p id="result"></p>
+  </div>
+  <script>
+    let score = 0;
+
+    function checkMemory() {
+      const dateTimeInput = document.getElementById('dateTimeInput').value;
+      console.log('DateTime Input:', dateTimeInput);
+
+      var d = new Date();
+      var currentDateTime =
+        d.getFullYear() +
+        "-" +
+        (d.getMonth() + 1 < 10 ? `0${d.getMonth() + 1}` : d.getMonth() + 1) +
+        "-" +
+        d.getDate() +
+        " " +
+        d.getHours() +
+        ":" +
+        d.getMinutes();
+
+      const userDateTimeInput = dateTimeInput.slice(0, 16);
+
+
+      if (currentDateTime === userDateTimeInput) {
+        score++;
+        document.getElementById('result').textContent = 'You remembered correctly! Score: ' + score;
+
+        const answers = localStorage.getItem("X-cognitive")
+
+        if (!answers) {
+          window.location.href = "questions.html"
+        } else {
+          localStorage.setItem("X-cognitive", JSON.stringify({
+            ...JSON.parse(answers),
+            datetime_avg: `100`
+          }))
+        }
+
+        document.getElementById("resultBtn").style.visibility = "visible"
+      } else {
+        document.getElementById('result').textContent = 'Score: ' + score;
+
+        const answers = localStorage.getItem("X-cognitive")
+
+        if (!answers) {
+          window.location.href = "questions.html"
+        } else {
+          localStorage.setItem("X-cognitive", JSON.stringify({
+            ...JSON.parse(answers),
+            datetime_avg: `0`
+          }))
+        }
+
+        document.getElementById("resultBtn").style.visibility = "visible"
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Doctors List</title>
+    <style>
+        img {
+            padding-left: 40%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            /* Arrange children in a column */
+            min-height: 100vh;
+            /* Set minimum height to full viewport height */
+            background-color: rgba(83, 111, 228, 0.4);
+            /* Background color */
+        }
+
+        header {
+            background-color: black;
+            color: #fff;
+            padding: 1px;
+        }
+
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        footer {
+            margin-top: auto;
+            /* Push footer to the bottom */
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Three columns, minimum width of 300px */
+            gap: 20px;
+            /* Gap between grid items */
+            padding: 20px;
+            /* Padding around the grid */
+            width: 80%;
+            /* Width of the grid */
+            margin: 0 auto;
+            /* Center the grid horizontally */
+        }
+
+        .doctor-card {
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Added background color */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Added box shadow for depth */
+            padding: 20px;
+            /* Padding inside the card */
+        }
+
+        .doctor-photo {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .doctor-details {
+            text-align: center;
+        }
+
+        .doctor-details h2 {
+            margin-top: 0;
+        }
+
+        .doctor-details p {
+            margin: 5px 0;
+        }
+
+        /* .contact-button {
+            background-color: cornflowerblue;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        } */
+
+        .contact-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body
+    style="background:linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%); background-repeat: no-repeat;background-size: cover">
+    <p>
+        <center style="font-size: 60px; color: darkslateblue">NEUROLOGISTS</center>
+    </p>
+    <!--<header>
+    <h3>Back</h3>
+</header> -->
+    <div class="container">
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-aumir-moin-neurologist-mysore-084aa6af-8a65-4800-8519-d04134b4aa02.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. Aumir Moin</h2>
+                <p>Neurologist</p>
+                <p><b>Apollo BGS Hospitals</b></p>
+                <p><b>Tel-Phone:</b> 0821-2568888</p>
+                <p><b>Address:</b> 23, Adhichunchanagiri Road, Mysore</p><br>
+                <a href="https://maps.app.goo.gl/wEK75h2d7neyeoTS8">Get Directions</a>
+                <br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/dr-aumir-moin-neurologist?practice_id=1141625&specialization=Neurologist&referrer=doctor_listing&page_uid=2a4faa5b-51c3-4c0a-be9c-96d66f37c469">More
+                    Information</a>
+            </div>
+            <!-- Doctor card content -->
+        </div>
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-b-s-keshava-neurologist-mysore-be0dd79f-37b8-4615-947b-fe90b863fc03.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. B.S.Keshava</h2>
+                <p>Neurologist</p>
+                <p><b>City Neuro Center</b></p>
+                <p><b>Tel-Phone:</b> 098807 98967</p>
+                <p><b>Address:</b> 3rd Stage, 2nd Main, 10th Cross, Dr's Corners Road., Mysore</p>
+                <br>
+                <a href="https://maps.app.goo.gl/fmgAhQZo4d7iTDpv9">Get Directions</a>
+                <br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/b-s-keshava-neurologist?practice_id=987709&specialization=Neurologist&referrer=doctor_listing&page_uid=2a4faa5b-51c3-4c0a-be9c-96d66f37c469">More
+                    Information</a>
+            </div>
+        </div>
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-somanath-vasudev-neurologist-mysore-6a0bbcfb-b7e2-43c5-9af6-2c37e2e7c4c8.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. Somanath Vasudev</h2>
+                <p>Neurologist</p>
+                <p><b>Apollo BGS Hospital</b></p>
+                <p><b>Tel-Phone:</b> 0821-2568888</p>
+                <p><b>Address:</b>23, Adhichunchanagiri Road, Mysore</p><br>
+                <a href="https://maps.app.goo.gl/wEK75h2d7neyeoTS8">Get Directions</a>
+                <br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/dr-somanath-vasudev-neurologist?practice_id=1141625&specialization=Neurologist&referrer=doctor_listing&page_uid=2a4faa5b-51c3-4c0a-be9c-96d66f37c469">More
+                    Information</a>
+            </div>
+        </div>
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-shasthara-neurologist-mysore-385b8bf2-bc81-45ec-9a04-d986c1065a91.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. Shasthara</h2>
+                <p>Neurologist</p>
+                <p><b>JSS Hospital</b></p>
+                <p><b>Tel-Phone:</b> 0821-233 5555</p>
+                <p><b>Address:</b> Mahatma Gandhi Road, Fort Mohalla, Mysuru, Karnataka 570004</p><br>
+                <a href="https://maps.app.goo.gl/jXjtKrn7hRFHWV3z7">Get Directions</a>
+                <br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/dr-shasthara-neurologist?practice_id=692951&specialization=Neurologist&referrer=doctor_listing&page_uid=2a4faa5b-51c3-4c0a-be9c-96d66f37c469">More
+                    Information</a>
+            </div>
+        </div>
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-v-shivananda-neurosurgeon-mysore-b1955f8c-5321-4a81-812e-7f0047512627.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. V Shivananda</h2>
+                <p>Neurologist</p>
+                <p><b>Adarsh Speciality Clinic</b></p>
+                <p><b>Tel-Phone:</b> 0821-2420058</p>
+                <p><b>Address:</b> #372/1, Chamaraja Double Road, K R Mohalla, Ramaswamy Circle, Mysore</p><br>
+                <a href="https://maps.app.goo.gl/wSLwb8hcUwc5niS39">Get Directions</a>
+                <br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/v-shivananda-neurosurgeon?practice_id=988771&specialization=Neurologist&referrer=doctor_listing&page_uid=2a4faa5b-51c3-4c0a-be9c-96d66f37c469">More
+                    Information</a>
+            </div>
+        </div>
+
+        <!-- Your doctor cards go here -->
+    </div>
+
+    <!--<footer>
+    <p>&copy; 2024 DoctorCare. All rights reserved.</p>
+</footer> -->
+</body>
+
+</html>

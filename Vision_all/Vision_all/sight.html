@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual acuity test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(197, 36, 205, 0.2);
+        }
+
+        .quiz-container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .option {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #scorecard {
+            display: none;
+        }
+
+        #nextbtn {
+            font-size: 25px;
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        <center><b style="font-size: 50px">Visual Acuity Test</b></center>
+    </p><br>
+    <hr style="border: 2px solid #000;">
+    <br>
+    <p>
+        <center><b style="font-size: 25px">Close one of your eyes and read the below given letters!!!</b></center>
+    </p>
+    <div class="quiz-container">
+        <div class="question" id="question1">
+            <img src="images/1.png" alt="Image 1">
+            <p style="font-size: 20px">Are you able to read this completely?</p>
+            <button class="option" onclick="selectOption('yes', 'question2')">Yes</button>
+            <button class="option" onclick="selectOption('no', 'question2')">No</button>
+        </div>
+        <div class="question" id="question2" style="display: none;">
+            <img src="images/2.png" alt="Image 2">
+            <p style="font-size: 20px">Are you able to read this completely?</p>
+            <button class="option" onclick="selectOption('yes', 'question3')">Yes</button>
+            <button class="option" onclick="selectOption('no', 'question3')">No</button>
+        </div>
+        <div class="question" id="question3" style="display: none;">
+            <img src="images/3.png" alt="Image 3">
+            <p style="font-size: 20px">Are you able to read this completely?</p>
+            <button class="option" onclick="selectOption('yes', 'question4')">Yes</button>
+            <button class="option" onclick="selectOption('no', 'question4')">No</button>
+        </div>
+        <div class="question" id="question4" style="display: none;">
+            <img src="images/4.png" alt="Image 4">
+            <p style="font-size: 20px">Are you able to read this completely?</p>
+            <button class="option" onclick="selectOption('yes', 'question5')">Yes</button>
+            <button class="option" onclick="selectOption('no', 'question5')">No</button>
+        </div>
+        <div class="question" id="question5" style="display: none;">
+            <img src="images/5.png" alt="Image 5">
+            <p style="font-size: 20px">Are you able to read this completely?</p>
+            <button class="option" onclick="selectOption('yes', 'question6')">Yes</button>
+            <button class="option" onclick="selectOption('no', 'question6')">No</button>
+        </div>
+        <div class="question" id="question6" style="display: none;">
+            <img src="images/6.png" alt="Image 6">
+            <p style="font-size: 20px">Are you able to read this completely?</p>
+            <button class="option" onclick="selectOption('yes', 'question7')">Yes</button>
+            <button class="option" onclick="selectOption('no', 'question7')">No</button>
+        </div>
+        <div class="question" id="question7" style="display: none;">
+            <img src="images/7.png" alt="Image 7">
+            <p style="font-size: 20px">Are you able to read this completely?</p>
+            <button class="option" onclick="selectOption('yes', 'question8')">Yes</button>
+            <button class="option" onclick="selectOption('no', 'question8')">No</button>
+        </div>
+        <div class="question" id="question8" style="display: none;">
+            <img src="images/8.png" alt="Image 8">
+            <p style="font-size: 20px">Are you able to read this completely?</p>
+            <button class="option" onclick="selectOption('yes', 'question9')">Yes</button>
+            <button class="option" onclick="selectOption('no', 'question9')">No</button>
+        </div>
+        <div class="question" id="question9" style="display: none;">
+            <img src="images/9.png" alt="Image 9">
+            <p style="font-size: 20px">Are you able to read this completely?</p>
+            <button class="option" onclick="selectOption('yes', 'question10')">Yes</button>
+            <button class="option" onclick="selectOption('no', 'question10')">No</button>
+        </div>
+        <div class="question" id="question10" style="display: none;">
+            <img src="images/10.png" alt="Image 10">
+            <p style="font-size: 20px">Are you able to read this completely?</p>
+            <button class="option" onclick="selectOption('yes', 'question11')">Yes</button>
+            <button class="option" onclick="selectOption('no', 'question11')">No</button>
+        </div>
+        <div class="question" id="question11" style="display: none;">
+            <img src="images/11.png" alt="Image 11">
+            <p style="font-size: 20px">Are you able to read this completely?</p>
+            <button class="option" onclick="selectOption('yes', 'scorecard')">Yes</button>
+            <button class="option" onclick="selectOption('no', 'scorecard')">No</button>
+        </div>
+        <div class="nextbtn">
+            <button id="nextbtn" onclick="window.location.href='gridinstruction.html'">Next</button>
+        </div>
+        <div id="scorecard">
+            <h2>Your Accuracy: <span id="accuracy">0%</span></h2>
+        </div>
+    </div>
+    <script>
+        let score = 0;
+        let currentQuestion = 1;
+        const totalQuestions = 11;
+
+        function selectOption(option, nextQuestionId) {
+            if (option === 'yes') {
+                score++;
+            }
+            document.getElementById('question' + currentQuestion).style.display = 'none';
+            currentQuestion++;
+
+            if (currentQuestion > totalQuestions) {
+                document.getElementById('scorecard').style.display = 'block';
+                let accuracy = (score / totalQuestions) * 100;
+                document.getElementById('accuracy').innerText = accuracy.toFixed(2) + '%';
+
+                const answers = localStorage.getItem("X-vision")
+
+                if (!answers) {
+                    window.location.href = "questions.html"
+                } else {
+                    localStorage.setItem("X-vision", JSON.stringify({
+                        ...JSON.parse(answers),
+                        sight_avg: `${accuracy.toFixed(2)}`
+                    }))
+                }
+
+            } else {
+                document.getElementById(nextQuestionId).style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

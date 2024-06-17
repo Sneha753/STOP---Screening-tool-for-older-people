@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>e Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: bisque;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .conatiner {
+      text-align: center;
+    }
+
+    #nextbtn {
+      margin-top: 70px;
+      font-size: 40px;
+      background-color: red;
+      border-radius: 5px;
+      color: white;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="conatiner">
+    <h1>Tumbling e Test</h1>
+    <hr width="100%" color="black" />
+    <br><br>
+    <div id="question1">
+      <h2>choose the smallest letter that you are able to see clearly</h2>
+      <img src="e1.jpg" alt="e1" onclick="selectImage('e1')" style="cursor: pointer;">
+      <img src="e2.jpg" alt="e2" onclick="selectImage('e2')" style="cursor: pointer;">
+      <img src="e3.jpg" alt="e3" onclick="selectImage('e3')" style="cursor: pointer;">
+      <img src="e4.jpg" alt="e4" onclick="selectImage('e4')" style="cursor: pointer;">
+    </div>
+
+    <div id="question2" style="display: none;">
+      <h2>choose the smallest letter that you are able to see clearly</h2>
+      <img src="w1.jpg" alt="w1" onclick="selectImage('w1')" style="cursor: pointer;">
+      <img src="w2.jpg" alt="w2" onclick="selectImage('w2')" style="cursor: pointer;">
+      <img src="w3.jpg" alt="w3" onclick="selectImage('w3')" style="cursor: pointer;">
+      <img src="w4.jpg" alt="w4" onclick="selectImage('w4')" style="cursor: pointer;">
+    </div>
+
+    <div id="question3" style="display: none;">
+      <h2>choose the smallest letter that you are able to see clearly</h2>
+      <img src="m1.jpg" alt="m1" onclick="selectImage('m1')" style="cursor: pointer;">
+      <img src="m2.jpg" alt="m2" onclick="selectImage('m2')" style="cursor: pointer;">
+      <img src="m3.jpg" alt="m3" onclick="selectImage('m3')" style="cursor: pointer;">
+      <img src="m4.jpg" alt="m4" onclick="selectImage('m4')" style="cursor: pointer;">
+    </div>
+
+    <div id="result" style="display: none;">
+      <h2>Result:</h2>
+      <p id="score"></p>
+      <p id="accu"></p>
+      <p id="diag"></p>
+    </div>
+    <div>
+      <button id="nextbtn" onclick="window.location.href='/STOP_APP/result.html'">Next</button>
+    </div>
+  </div>
+  <script>
+    var score = 0;
+
+    function selectImage(selected) {
+      if (selected === 'e4' || selected === 'w4' || selected === 'm4') {
+        score += 4;
+      }
+      else if (selected === 'e3' || selected === 'w3' || selected === 'm3') {
+        score += 3;
+      }
+      else if (selected === 'e2' || selected === 'w2' || selected === 'm2') {
+        score += 2;
+      }
+      else if (selected === 'e1' || selected === 'w1' || selected === 'm1') {
+        score += 1;
+      }
+      var accu = (score / 12) * 100;
+      if (selected === 'e1' || selected === 'e2' || selected === 'e3' || selected === 'e4') {
+        document.getElementById('question1').style.display = 'none';
+        document.getElementById('question2').style.display = 'block';
+      } else if (selected === 'w1' || selected === 'w2' || selected === 'w3' || selected === 'w4') {
+        document.getElementById('question2').style.display = 'none';
+        document.getElementById('question3').style.display = 'block';
+      } else if (selected === 'm1' || selected === 'm2' || selected === 'm3' || selected === 'm4') {
+        document.getElementById('question3').style.display = 'none';
+        document.getElementById('result').style.display = 'block';
+        document.getElementById('score').textContent = 'Your score is ' + score + '/12';
+        document.getElementById('accu').textContent = 'Accuracy : ' + accu + '%';
+
+        const answers = localStorage.getItem("X-vision")
+
+        if (!answers) {
+          window.location.href = "questions.html"
+        } else {
+          localStorage.setItem("X-vision", JSON.stringify({
+            ...JSON.parse(answers),
+            snell2_avg: `${accu.toFixed(2)}`
+          }))
+        }
+      }
+    }
+  </script>
+
+</body>
+
+</html>

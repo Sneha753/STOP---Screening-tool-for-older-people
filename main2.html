@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            background-repeat: no-repeat;
+            transition: margin-left 0.3s;
+            margin-left: 0;
+        }
+
+        header {
+            background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 10px 0;
+            height: 80px;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0px;
+            background-size: cover;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 40px;
+
+        }
+
+        .navbar nav {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .navbar nav li {
+            list-style: none;
+            margin-left: 0.8rem;
+            padding-right: 30px;
+        }
+
+        .navbar nav li a {
+            width: 40px;
+            color: #26227d;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.5rem 0.4rem;
+            border-radius: 6px;
+            transition: all 0.4s ease-in;
+            font-weight: 600;
+        }
+
+        .navbar nav li a:hover {
+            background: #3498db;
+            color: #1c0101;
+        }
+
+
+
+        .content {
+            padding-left: 50px;
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            justify-content: center;
+            height: 100vh;
+            margin-top: 60px;
+        }
+
+        .content h1 {
+            font-size: 6.5rem;
+        }
+
+        .content h2 {
+            font-size: 3.5rem;
+        }
+
+        .content p {
+            line-height: 2;
+            margin-top: 2rem;
+        }
+
+        .content button {
+            display: block;
+            margin: 2rem 0;
+            width: 30%;
+            padding: 0.7rem 0;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: 1px solid #190101;
+            background: inherit;
+            color: #0a0000;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .content button:hover,
+        i:hover {
+            background: #3498db;
+        }
+
+        .slides {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            color: rgb(0, 11, 11);
+        }
+
+        .slides img {
+            width: 350px;
+        }
+
+        .slide1 {
+            background: linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%);
+        }
+
+        .slide2 {
+            background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+        }
+
+        .material-icons-outlined {
+            vertical-align: middle;
+            line-height: 1px;
+        }
+
+        .slide-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-content .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 50px;
+        }
+
+        footer {
+            background-color: black;
+            height: 60px;
+            color: #fff;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            background-color: #8f8aed;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 25px;
+            color: black;
+            display: block;
+            transition: 0.3s;
+            padding: 8%;
+        }
+
+        .sidebar a:hover {
+            background: #e0c3fc;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .open {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: inherit;
+            color: white;
+            border: none;
+            padding: 20px 15px;
+            transition: 0.3s;
+        }
+
+        .open:hover {
+            background-color: inherit;
+        }
+
+        .test-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 40px;
+        }
+
+        .test-item img {
+            width: 200px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .test-item button {
+            padding: 0.7rem 1rem;
+            background-color: inherit;
+            color: black;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: auto;
+            text-align: center;
+            display: inline-block;
+            border: 1px solid #190101;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .test-item button:hover {
+            background-color: #2980b9;
+        }
+
+        .slides.content.slide1 .slide-content {
+            gap: 2cm;
+        }
+
+        .container {
+            margin-bottom: -20px;
+        }
+
+        section {
+            margin-top: -60px;
+            padding-top: 0;
+        }
+
+        .speak-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #6d67e4;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 2rem;
+            transition: background 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <button class="open" onclick="openNav()">☰</button>
+            <div class="navbar">
+                <nav>
+                    <li><a href="#">Account<span class="material-icons-outlined">person</span></a></li>
+                </nav>
+                <nav>
+                    <li><a href="#home">Home <span class="material-icons-outlined">home</span></a></li>
+                    <li><a href="#tests">Tests <span class="material-icons-outlined">quiz</span></a></li>
+                    <li><a href="#doctors">Doctors <span class="material-icons-outlined">person_search</span></a></li>
+                    <li><a href="#shop">Shop <span class="material-icons-outlined">medication</span></a></li>
+                    <li><a href="personal_form.html">Personal Details<span
+                                class="material-icons-outlined">person</span></a></li>
+                    <li><a href="C:/Users/rasha/OneDrive/Desktop/loginreg/login/login.html">Logout <span
+                                class="material-icons-outlined">logout</span></a></li>
+                </nav>
+            </div>
+        </div>
+
+    </header>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="main2.html"><span class="material-icons-outlined">home</span>Home</a>
+        <a href="#tests"><span class="material-icons-outlined">quiz</span>Tests</a>
+        <a href="#doctors"><span class="material-icons-outlined">person_search</span>Doctors</a>
+        <a href="#shop"><span class="material-icons-outlined">medication</span>Shop</a>
+        <a href="personal_form.html"><span class="material-icons-outlined">person</span>Personal
+            Details</a>
+        <a href="loginreg/login/login.html"><span class="material-icons-outlined">logout</span>Logout</a>
+
+    </div>
+    <section id="home">
+        <div class="container" style="background :  linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);  color:black">
+            <div class="content">
+                <br><br><br>
+                <h1 id="A1">S T O P</h1>
+                <br>
+                <h2>Screening Tool for the Elderly</h2>
+                <p>Providing screening tools for the elderly that they can use from the comfort of their own homes.</p>
+                <a href="#about" style="text-decoration:none;color: white"><button
+                        style="background-color:#6d67e4; color:white;">About STOP</button></a>
+            </div>
+            <div>
+                <img src="snehaaaaa.png" alt="" width="400px" height="500px"
+                    style="margin-top: 100px; margin-right: 0px;">
+            </div>
+
+        </div>
+    </section>
+    <section id="tests">
+        <div class="container">
+            <div class="slides content slide1">
+                <div class="slide-content">
+                    <div>
+                        <h2>Take Screening Test</h2><br>
+                        <hr style="height:4px;;width:75%;background-color:black"><br>
+                        <h3>Get screened for cognitive decline and vision decline with our standardized screening tests
+                        </h3>
+                    </div>
+                    <div class="test-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2219/2219225.png" alt="Test Image 1">
+                        <button
+                            onclick="window.location.href=`${window.location.origin}/STOP_APP/cognitive_all/cognitive_all/instructions.html`"
+                            style="background-color:#6d67e4;color:white; width:200px">Take Test</button>
+                    </div>
+                    <div class="test-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/128/128644.png" alt="Test Image 2">
+                        <button
+                            onclick="window.location.href=`${window.location.origin}/STOP_APP/Vision_all/Vision_all/visiontestinstruct.html`"
+                            style="background-color:#6d67e4;color:white; width:200px">Take Test</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="doctors">
+        <div class="container">
+            <div class="slides content slide2">
+                <div class="slide-content">
+                    <img src="doctors.png" alt="Doctors">
+                    <div class="text">
+                        <h2>Find Doctors</h2><br>
+                        <hr style="height:4px;;width:50%;background-color:black"><br>
+                        <h3>Find the best healthcare professionals near you based on your medical requirements</h3><br>
+                        <button
+                            onclick="window.location.href=`${window.location.origin}/STOP_APP/all_doctors/doctor1.html`"
+                            style="background-color:#6d67e4;color:white; font-size:28px;">Find Doctors</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="shop">
+        <div class="container">
+            <div class="slides content slide1">
+                <div class="slide-content">
+                    <div class="text">
+                        <h2>Buy Medicine</h2><br>
+                        <hr style="height:4px;;width:50%;background-color:black"><br>
+                        <h3>An at-home pharmacy for you to get all your medical needs in the click of a few buttons</h3>
+                        <br>
+                        <button style="background-color:#3498db;color:white; font-size:28px;"
+                            onclick="window.location.href=`${window.location.origin}/STOP_APP/all_doctors/medicine.html`">Buy
+                            Medicines</button>
+                    </div>
+                    <img src="buy_medicine.png" alt="Medicine" style="margin-right:200px">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <div class="container">
+            <div class="slides content slide2">
+                <div class="slide-content">
+                    <img src="warning.png" alt="STOP">
+                    <div class="text">
+                        <h2>About S T O P</h2>
+                        <h2>screening tool for older people</h2>
+                        <hr style="height:4px;background-color:black"><br>
+                        <h3>S T O P is a transforms care for older adults by amalgamating different types of medical
+                            services.<br>
+                            Its goal is to enrich the quality of life and well-being through an individual-focused
+                            method.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <button class="speak-button" onclick="readInstructions()">
+        <span class="material-icons-outlined">volume_up</span>
+    </button>
+
+
+    <footer>
+        <p>&copy; 2024 STOP. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.body.style.marginLeft = "250px";
+        }
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.body.style.marginLeft = "0";
+        }
+
+        function readInstructions() {
+            const message = "Welcome to the Screening Tool for the Elderly. Navigate through the sections to take tests, find doctors and shop for medicines.";
+            const speech = new SpeechSynthesisUtterance(message);
+            speechSynthesis.speak(speech);
+        }
+    </script>
+</body>
+
+</html>

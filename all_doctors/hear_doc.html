@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Doctors List</title>
+    <style>
+        img {
+            padding-left: 40%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            /* Arrange children in a column */
+            min-height: 100vh;
+            /* Set minimum height to full viewport height */
+            background-color: rgba(83, 111, 228, 0.4);
+            /* Background color */
+        }
+
+        header {
+            background-color: black;
+            color: #fff;
+            padding: 1px;
+        }
+
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        footer {
+            margin-top: auto;
+            /* Push footer to the bottom */
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Three columns, minimum width of 300px */
+            gap: 20px;
+            /* Gap between grid items */
+            padding: 20px;
+            /* Padding around the grid */
+            width: 80%;
+            /* Width of the grid */
+            margin: 0 auto;
+            /* Center the grid horizontally */
+        }
+
+        .doctor-card {
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Added background color */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Added box shadow for depth */
+            padding: 20px;
+            /* Padding inside the card */
+        }
+
+        .doctor-photo {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .doctor-details {
+            text-align: center;
+        }
+
+        .doctor-details h2 {
+            margin-top: 0;
+        }
+
+        .doctor-details p {
+            margin: 5px 0;
+        }
+
+        .contact-button {
+            background-color: cornflowerblue;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body
+    style="background:linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%); background-repeat: no-repeat;background-size: cover">
+    <!--<header>
+    <h3>Back</h3>
+</header> -->
+    <p>
+        <center style="font-size: 60px; color: darkslateblue">OTOLARYNGOLOGISTS</center>
+    </p>
+    <div class="container">
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-praveen-kumar-r-ent-otorhinolaryngologist-mysore-acdb8469-59fd-4bcb-b412-c94317d1632a.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. Praveen Kumar R</h2>
+                <p>ENT/ Otolaryngologist</p>
+                <p><b>Apollo Clinic</b></p>
+                <p><b>Tel-Phone:</b> 1860 500 7788</p>
+                <p><b>Address:</b> #23, Panchavati Circle, Kalidasa Road, Landmark: Above Aircel, Mysore</p><br>
+                <a href="https://maps.app.goo.gl/XvCUPTDJA8udXYRi7">Get Directions</a><br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/dr-praveen-kumar-r-ear-nose-throat-ent-specialist?practice_id=896037&specialization=Ear-Nose-Throat%20(ENT)%20Specialist&referrer=doctor_listing&page_uid=580c0c5c-ad52-45c0-8b47-d1819406f38b">More
+                    Information</a>
+            </div>
+            <!-- Doctor card content -->
+        </div>
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-harindra-m-n-ent-otorhinolaryngologist-mysore-8af3ac78-588c-4756-bbe0-3644ff39a858.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. Harindra M.N.</h2>
+                <p>ENT/ Otolaryngologist</p>
+                <p><b>Apollo BGS Hospitals</b></p>
+                <p><b>Tel-Phone:</b> 0821-2568888</p>
+                <p><b>Address:</b> 23, Adhichunchanagiri Road, Mysore</p><br>
+                <a href="https://maps.app.goo.gl/wEK75h2d7neyeoTS8">Get Directions</a><br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/dr-harindra-m-n-ear-nose-throat-ent-specialist?practice_id=1141625&specialization=Ear-Nose-Throat%20(ENT)%20Specialist&referrer=doctor_listing&page_uid=580c0c5c-ad52-45c0-8b47-d1819406f38b">More
+                    Information</a>
+            </div>
+        </div>
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-girish-n-kulkarni-ent-otorhinolaryngologist-mysore-6dab0ea0-1879-4328-8107-5ed5707059e1.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. Girish N. Kulkarni</h2>
+                <p>ENT/ Otolaryngologist</p>
+                <p><b>Apollo BGS Hospitals</b></p>
+                <p><b>Tel-Phone:</b> 0821-2568888</p>
+                <p><b>Address:</b> 23, Adhichunchanagiri Road, Mysore</p><br>
+                <a href="https://maps.app.goo.gl/wEK75h2d7neyeoTS8">Get Directions</a><br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/dr-girish-n-kulkarni-ear-nose-throat-ent-specialist?practice_id=1141625&specialization=Ear-Nose-Throat%20(ENT)%20Specialist&referrer=doctor_listing&page_uid=580c0c5c-ad52-45c0-8b47-d1819406f38b">More
+                    Information</a>
+            </div>
+        </div>
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-deepthi-nayak-ent-head-and-neck-surgeon-mysore-263c036b-43bc-4e42-9bae-7c8dc946196b.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. Deepthi Nayak</h2>
+                <p>ENT/ Otolaryngologist</p>
+                <p><b>Reniu Clinic</b></p>
+                <p><b>Tel-Phone:</b> 089771 14111</p>
+                <p><b>Address:</b> 2714, Ground Floor, 8th Cross, Landmark: Adjacent to Empire Hotel, Mysore</p><br>
+                <a href="https://maps.app.goo.gl/YoWsQarWfxsBQTgd6">Get Directions</a><br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/dr-deepthi-nayak-ear-nose-throat-ent-specialist?practice_id=1131461&specialization=Ear-Nose-Throat%20(ENT)%20Specialist&referrer=doctor_listing&page_uid=580c0c5c-ad52-45c0-8b47-d1819406f38b">More
+                    Information</a>
+            </div>
+        </div>
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-dathathri-h-a-ent-otorhinolaryngologist-mysore-6ae4ece5-1fd7-438f-a6ce-527894208fe1.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. Dathathri H A</h2>
+                <p>ENT/ Otolaryngologist</p>
+                <p><b>Narayana Hospital </b></p>
+                <p><b>Tel-Phone:</b> 080675 06913</p>
+                <p><b>Address:</b> Ring Road Devanur., Mysore</p><br>
+                <a href="https://maps.app.goo.gl/sXWNUynzAXGMiZXW7">Get Directions</a><br><br>
+                <!-- <button class="contact-button"
+                    href="https://www.practo.com/mysore/doctor/dathathri-h-a-ear-nose-throat-ent-specialist?practice_id=848527&specialization=Ear-Nose-Throat%20(ENT)%20Specialist&referrer=doctor_listing&page_uid=580c0c5c-ad52-45c0-8b47-d1819406f38b">Contact
+                    Clinic</button><br> -->
+                <a
+                    href="https://www.practo.com/mysore/doctor/dathathri-h-a-ear-nose-throat-ent-specialist?practice_id=848527&specialization=Ear-Nose-Throat%20(ENT)%20Specialist&referrer=doctor_listing&page_uid=580c0c5c-ad52-45c0-8b47-d1819406f38b">More
+                    Information</a>
+            </div>
+        </div>
+
+        <!-- Your doctor cards go here -->
+    </div>
+
+    <!--<footer>
+    <p>&copy; 2024 DoctorCare. All rights reserved.</p>
+</footer> -->
+</body>
+
+</html>

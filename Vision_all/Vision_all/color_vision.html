@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COLOR VISION</title>
+    <style>
+        body {
+            width: 100%;
+        }
+        .heading {
+            background-image: url("images/heading.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-size: 44px;
+            text-align: center;
+            padding-top: 10px;
+            color: white;
+
+        }
+
+        .instruction {
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            padding-left: 200px;
+        }
+         .container{
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background-color:rgb(191, 226, 238)
+        }
+
+        .card {
+            width: 300px;
+            height: 300px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 10px 5px 5px rgba(0,0,0,0.5);
+            margin: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card .img img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .card .text {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .card input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 80%;
+            text-align: center;
+        }
+
+        #submitBtn, #nextbtn{
+            font-size: 40px;
+            background-color: rgb(19, 19, 112);
+            color: white;
+            border-radius: 5px;
+        }
+
+        #result {
+            font-size: 20px;
+            text-align: center;
+            border: 2px solid white;
+            background-color: rgb(23, 23, 104);;
+            color: white;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="heading">
+        <h1>COLOR VISION TEST</h1>
+        <hr>
+    </div>
+
+    <div class="instruction">
+        <h3>Look at the pictures below, and enter the numbers that you see in the corresponding boxes.</h3>
+    </div>
+
+
+    <div class="container">
+    <div class="card">
+        <div class="img">
+            <img src="images/c12.jpeg" alt="1">
+        </div>
+        <div class="text">
+            <input type="text" placeholder="Enter The Number">
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="img">
+            <img src="images/c96.jpeg" alt="2">
+        </div>
+        <div class="text">
+            <input type="text" placeholder="Enter The Number">
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="img">
+            <img src="images/c74.jpeg" alt="2">
+        </div>
+        <div class="text">
+            <input type="text" placeholder="Enter The Number">
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="img">
+            <img src="images/c26.jpeg" alt="2">
+        </div>
+        <div class="text">
+            <input type="text" placeholder="Enter The Number">
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="img">
+            <img src="images/c3.jpeg" alt="2">
+        </div>
+        <div class="text">
+            <input type="text" placeholder="Enter The Number">
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="img">
+            <img src="images/c16.jpeg" alt="2">
+        </div>
+        <div class="text">
+            <input type="text" placeholder="Enter The Number">
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="img">
+            <img src="images/c15.jpg" alt="2">
+        </div>
+        <div class="text">
+            <input type="text" placeholder="Enter The Number">
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="img">
+            <img src="images/c45.jpeg" alt="2">
+        </div>
+        <div class="text">
+            <input type="text" placeholder="Enter The Number">
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="img">
+            <img src="images/c2.jpeg" alt="2">
+        </div>
+        <div class="text">
+            <input type="text" placeholder="Enter The Number">
+        </div>
+    </div>
+    <div class="btns">
+    <button id="submitBtn">Submit</button>
+    <button id="nextbtn" onclick="window.location.href='snellinstruct.html'" style="background-color:red";>Next</button>
+ </div>
+
+</div>
+    
+<div id="result"></div>
+
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            var inputs = document.querySelectorAll('.card input[type="text"]');
+            var userAnswers = [];
+            inputs.forEach(function(input) {
+                userAnswers.push(input.value);
+            });
+
+            var correctAnswers = ['12', '96', '74', '26', '3', '16', '15', '45', '2'];
+            var correctCount = 0;
+
+            for (var i = 0; i < userAnswers.length; i++) {
+                if (userAnswers[i] === correctAnswers[i]) {
+                    correctCount++;
+                }
+            }
+
+            var totalQuestions = correctAnswers.length;
+            var accuracy = (correctCount / totalQuestions) * 100;
+
+            var resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = "<p>Your Total Score is: " + correctCount + " / " + totalQuestions + "</p>";
+            resultDiv.innerHTML += "<p>Your Accuracy is: " + accuracy.toFixed(2) + "%</p>";
+
+            const answers = localStorage.getItem("X-vision")
+
+            if(!answers){
+                window.location.href = "questions.html"
+            }else{
+                localStorage.setItem("X-vision", JSON.stringify({
+                    ...JSON.parse(answers),
+                    colorvision_avg: `${accuracy.toFixed(2)}`
+                }))
+            }
+        });
+    </script>
+  
+</body>
+</html>

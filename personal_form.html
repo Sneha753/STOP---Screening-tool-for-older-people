@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Details Form</title>
+    <style>
+        body {
+            background-image: url('form1.jpeg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgb(140, 171, 225);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: black;
+        }
+
+        input,
+        select,
+        textarea {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group label {
+            font-size: 16px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 18px;
+            background-color: rgb(35, 14, 79);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(122, 185, 240);
+            color: black;
+        }
+
+        .submitted-data {
+            margin-top: 30px;
+        }
+
+        .submitted-data h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .submitted-data table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .submitted-data table,
+        .submitted-data th,
+        .submitted-data td {
+            border: 1px solid #ccc;
+        }
+
+        .submitted-data th,
+        .submitted-data td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .edit-button {
+            background-color: brown;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .edit-button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Patient Details Form</h1>
+        <form id="patient-form" action="Personal.php" method="post" enctype="multipart/form-data">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" aria-label="Full Name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" aria-label="Age" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" aria-label="Gender" required>
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" aria-label="Address" required></textarea>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" aria-label="Phone Number" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" aria-label="Email" required>
+
+            <label for="emergency-contact-name">Emergency Contact Name:</label>
+            <input type="text" id="emergency-contact-name" name="emergency-contact-name"
+                aria-label="Emergency Contact Name" required>
+
+            <label for="emergency-contact-phone">Emergency Contact Phone:</label>
+            <input type="tel" id="emergency-contact-phone" name="emergency-contact-phone"
+                aria-label="Emergency Contact Phone" required>
+
+            <label for="allergies">Known Allergies:</label>
+            <div class="checkbox-group" aria-label="Known Allergies">
+                <label><input type="checkbox" name="allergies[]" value="Diabetes"> Diabetes</label>
+                <label><input type="checkbox" name="allergies[]" value="Blood Pressure"> Blood Pressure</label>
+                <label><input type="checkbox" name="allergies[]" value="Thyroid"> Thyroid</label>
+            </div>
+
+            <label for="current-medications">Current Medications:</label>
+            <textarea id="current-medications" name="current-medications" rows="4"
+                aria-label="Current Medications"></textarea>
+
+            <label for="primary-physician">Primary Physician:</label>
+            <input type="text" id="primary-physician" name="primary-physician" aria-label="Primary Physician">
+
+            <label for="medical-history">Medical History:</label>
+            <input type="file" id="medical-history" name="medical-history" aria-label="Medical History" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

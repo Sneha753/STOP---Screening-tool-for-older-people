@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Visual Field Test</title>
+    <style>
+        /* body {
+            background-color: antiquewhite;
+        } */
+
+        .maindiv {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            size: 20px;
+        }
+
+        .button,
+        .button1 {
+            width: 5%;
+            height: 25rem;
+        }
+
+        /* Level 1 button colors */
+        #level1 .button {
+            background-color: blue;
+        }
+
+        #level1 .button1 {
+            background-color: rgb(33, 33, 211);
+        }
+
+        /* Level 2 button colors */
+        #level2 .button {
+            background-color: lightgreen;
+        }
+
+        #level2 .button1 {
+            background-color: rgb(134, 221, 134);
+        }
+
+        /* Level 3 button colors */
+        #level3 .button {
+            background-color: rgb(255, 245, 48);
+            /* Red */
+        }
+
+        #level3 .button1 {
+            background-color: rgb(253, 237, 90);
+            /* Yellow */
+        }
+
+        /* Level 4 button colors */
+        #level4 .button {
+            background-color: rgb(61, 204, 252);
+            /* Green */
+        }
+
+        #level4 .button1 {
+            background-color: rgb(51, 198, 247);
+            /* Cyan */
+        }
+
+        /* Level 5 button colors */
+        #level5 .button {
+            background-color: rgb(253, 40, 40);
+            /* Orange */
+        }
+
+        #level5 .button1 {
+            background-color: rgb(247, 40, 42);
+            /* Pink */
+        }
+
+        .level {
+            display: none;
+        }
+
+        #level1 {
+            display: block;
+            /* Ensure level1 is initially displayed */
+        }
+
+        #nextButton {
+            display: none;
+            max-width: 25%;
+            max-height: 20%;
+            border-radius: 3px;
+            margin-left: 47%;
+            background-color: green;
+        }
+
+        #nextbtn {
+            font-size: 40px;
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">VISUAL FIELD TEST</h1>
+    <hr style="border:2px solid #000">
+    <div class="level" id="level1">
+        <h2>Level 1</h2>
+        <br>
+        <div class="maindiv">
+            <button class="button" id="1">1</button>
+            <button class="button" id="2">2</button>
+            <button class="button" id="3">3</button>
+            <button class="button" id="4">4</button>
+            <button class="button1" id="5">5</button>
+            <button class="button" id="6">6</button>
+            <button class="button" id="7">7</button>
+            <button class="button" id="8">8</button>
+            <button class="button" id="9">9</button>
+        </div>
+        <p id="ans1" class="ans" style="text-align: center;"></p>
+        <p id="score1" style="text-align: center;">Score: 0 (Moves: 0)</p>
+    </div>
+
+    <div class="level" id="level2">
+        <h2>Level 2</h2>
+        <br>
+        <div class="maindiv">
+            <button class="button" id="1">1</button>
+            <button class="button" id="2">2</button>
+            <button class="button" id="3">3</button>
+            <button class="button" id="4">4</button>
+            <button class="button" id="5">5</button>
+            <button class="button" id="6">6</button>
+            <button class="button" id="7">7</button>
+            <button class="button1" id="8">8</button>
+            <button class="button" id="9">9</button>
+        </div>
+        <p id="ans2" class="ans" style="text-align: center;"></p>
+        <p id="score2" style="text-align: center;">Score: 0 (Moves: 0)</p>
+    </div>
+
+    <div class="level" id="level3">
+        <h2>Level 3</h2>
+        <br>
+        <div class="maindiv">
+            <button class="button" id="1">1</button>
+            <button class="button" id="2">2</button>
+            <button class="button" id="3">3</button>
+            <button class="button1" id="4">4</button>
+            <button class="button" id="5">5</button>
+            <button class="button" id="6">6</button>
+            <button class="button" id="7">7</button>
+            <button class="button" id="8">8</button>
+            <button class="button" id="9">9</button>
+        </div>
+        <p id="ans3" class="ans" style="text-align: center;"></p>
+        <p id="score3" style="text-align: center;">Score: 0 (Moves: 0)</p>
+    </div>
+
+    <div class="level" id="level4">
+        <h2>Level 4</h2>
+        <br>
+        <div class="maindiv">
+            <button class="button" id="1">1</button>
+            <button class="button" id="2">2</button>
+            <button class="button" id="3">3</button>
+            <button class="button" id="4">4</button>
+            <button class="button" id="5">5</button>
+            <button class="button" id="6">6</button>
+            <button class="button" id="7">7</button>
+            <button class="button" id="8">8</button>
+            <button class="button1" id="9">9</button>
+        </div>
+        <p id="ans4" class="ans" style="text-align: center;"></p>
+        <p id="score4" style="text-align: center;">Score: 0 (Moves: 0)</p>
+    </div>
+
+    <div class="level" id="level5">
+        <h2>Level 5</h2>
+        <br>
+        <div class="maindiv">
+            <button class="button1" id="1">1</button>
+            <button class="button" id="2">2</button>
+            <button class="button" id="3">3</button>
+            <button class="button" id="4">4</button>
+            <button class="button" id="5">5</button>
+            <button class="button" id="6">6</button>
+            <button class="button" id="7">7</button>
+            <button class="button" id="8">8</button>
+            <button class="button" id="9">9</button>
+        </div>
+        <p id="ans5" class="ans" style="text-align: center;"></p>
+        <p id="score5" style="text-align: center;">Score: 0 (Moves: 0)</p>
+        <div align="center" ;>
+            <button id="nextbtn" onclick="window.location.href='colorvisioninstruct.html'">Next</button>
+        </div>
+    </div>
+
+    <p id="accuracy"></p>
+    <button id="nextButton">Next Level</button><br>
+
+
+    <script>
+        let currentLevel = 1;
+        let sol1 = 5;
+        let sol2 = 8;
+        let sol3 = 4; // Define solutions for each level
+        let sol4 = 9;
+        let sol5 = 1;
+        let moves = 0;
+        let score = 0;
+
+        // Add event listeners to all buttons
+        const buttons = document.querySelectorAll('.button, .button1');
+        buttons.forEach(button => {
+            button.addEventListener('click', evaluate);
+        });
+
+        document.getElementById('nextButton').addEventListener('click', function () {
+            if (currentLevel < 5) { // Check if it's the last level
+                document.getElementById(`level${currentLevel}`).style.display = 'none';
+                document.getElementById(`level${currentLevel + 1}`).style.display = 'block';
+                if (currentLevel === 4) { // If it's the last level, change button text
+                    document.getElementById('nextButton').textContent = 'Finish';
+                }
+                currentLevel++;
+                updateScore(); // Update score display
+            } else {
+                let accuracy = Math.round((score / 100) * 100); // Calculate accuracy percentage
+                document.getElementById('accuracy').innerHTML = `Accuracy: ${accuracy}%`;
+
+                const answers = localStorage.getItem("X-vision")
+
+                if (!answers) {
+                    window.location.href = "questions.html"
+                } else {
+                    localStorage.setItem("X-vision", JSON.stringify({
+                        ...JSON.parse(answers),
+                        level12_avg: `${accuracy.toFixed(2)}`
+                    }))
+                }
+            }
+        });
+
+        function evaluate(event) {
+            moves++;
+            const userip = event.target.id;
+            const currentSol = eval(`sol${currentLevel}`);
+            if (userip == currentSol) {
+                document.getElementById(`ans${currentLevel}`).innerHTML = "Correct answer";
+                score += 20; // Increase score for correct guess
+                if (currentLevel < 5) { // Check if it's not the last level
+                    document.getElementById('nextButton').style.display = "block";
+                } else {
+                    document.getElementById('nextButton').textContent = 'Finish';
+                }
+            } else {
+                document.getElementById(`ans${currentLevel}`).innerHTML = "Incorrect answer.....Try again";
+                score -= 10; // Deduct 10 points for incorrect guess
+            }
+            updateScore(); // Update score display
+        }
+
+        function updateScore() {
+            document.getElementById(`score${currentLevel}`).textContent = `Score: ${score} (Moves: ${moves})`;
+        }
+    </script>
+</body>
+
+</html>

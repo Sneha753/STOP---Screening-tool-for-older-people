@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Doctors List</title>
+    <style>
+        img {
+            padding-left: 40%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            /* Arrange children in a column */
+            min-height: 100vh;
+            /* Set minimum height to full viewport height */
+            background-color: rgba(83, 111, 228, 0.4);
+            /* Background color */
+        }
+
+        header {
+            background-color: black;
+            color: #fff;
+            padding: 1px;
+        }
+
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        footer {
+            margin-top: auto;
+            /* Push footer to the bottom */
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Three columns, minimum width of 300px */
+            gap: 20px;
+            /* Gap between grid items */
+            padding: 20px;
+            /* Padding around the grid */
+            width: 80%;
+            /* Width of the grid */
+            margin: 0 auto;
+            /* Center the grid horizontally */
+        }
+
+        .doctor-card {
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Added background color */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Added box shadow for depth */
+            padding: 20px;
+            /* Padding inside the card */
+        }
+
+        .doctor-photo {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .doctor-details {
+            text-align: center;
+        }
+
+        .doctor-details h2 {
+            margin-top: 0;
+        }
+
+        .doctor-details p {
+            margin: 5px 0;
+        }
+
+        .contact-button {
+            background-color: cornflowerblue;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body
+    style="background:linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%); background-repeat: no-repeat;background-size: cover">
+    <!--<header>
+    <h3>Back</h3>
+</header> -->
+    <p>
+        <center style="font-size: 60px;color: darkslateblue">OPTHALMOLOGISTS</center>
+    </p>
+
+    <div class="container">
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-s-s-lakshmi-ophthalmologist-eye-surgeon-mysore-ffacace2-0c06-4e6b-b0e1-17d8d07084f7.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. S S Lakshmi</h2>
+                <p>Ophthalmologist/ Eye Surgeon</p>
+                <p>Apollo BGS Hospitals</p>
+                <p><b>Tel-Phone:</b> 0821-2568888</p>
+                <p><b>Address:</b> 23, Adhichunchanagiri Road, Mysore</p>
+                <a href="https://maps.app.goo.gl/wEK75h2d7neyeoTS8">Get Directions</a>
+                <br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/dr-s-s-lakshmi-ophthalmologist?practice_id=1141625&specialization=Ophthalmologist&referrer=doctor_listing&page_uid=1e011c04-73b3-4994-8342-d50fd5f3da72">More
+                    Information</a>
+            </div>
+            <!-- Doctor card content -->
+        </div>
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-sneha-s-m-ophthalmologist-eye-surgeon-mysore-79f3b422-f5c3-44a3-9a5e-e49a6b218736.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. Sneha S M</h2>
+                <p>Ophthalmologist/ Eye Surgeon</p>
+                <p><b>Sneha Eye Care</b></p>
+                <p><b>Tel-Phone:</b> 0821-2474960</p>
+                <p><b>Address:</b> 833, Maheshwari Complex, Vinayamarga Sangeetha Corner, Mysore</p>
+                <a href="https://maps.app.goo.gl/oEX32jDTC3FT6SnV9">Get Directions</a>
+                <br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/mani-sneha-sarangmath-ophthalmologist?practice_id=1055646&specialization=Ophthalmologist&referrer=doctor_listing&page_uid=1e011c04-73b3-4994-8342-d50fd5f3da72">More
+                    Information</a>
+            </div>
+        </div>
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-jayanti-iyenger-ophthalmologist-eye-surgeon-mysore-5ac78bb0-c13c-41eb-82fe-97be19913ff1.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. Jayanti Iyenger</h2>
+                <p>Ophthalmologist/ Eye Surgeon</p>
+                <p><b>Sudharshan Eye Care</b></p>
+                <p><b>Tel-Phone:</b> 0821-2516930</p>
+                <p><b>Address:</b>22, Andal Mandiram Complex, 4th Main Road, Mysore</p>
+                <a href="https://maps.app.goo.gl/sb2NndiKwLhfN6817">Get Directions</a>
+                <br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/dr-jayanti-iyenger-ophthalmologist?practice_id=1043304&specialization=Ophthalmologist&referrer=doctor_listing&page_uid=1e011c04-73b3-4994-8342-d50fd5f3da72">More
+                    Information</a>
+            </div>
+        </div>
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-k-satish-ophthalmologist-eye-surgeon-mysore-e251663b-407f-4c17-aa9f-17ca6b83fdb3.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. K Satish</h2>
+                <p>Ophthalmologist/ Eye Surgeon</p>
+                <p><b>Rahul Eye Clinic</b></p>
+                <p><b>Tel-Phone:</b> 081055 05001</p>
+                <p><b>Address:</b> #38, Nrupatunga Road, Kuvempunagar, Mysore</p>
+                <a href="https://maps.app.goo.gl/tfpGDyq3NALaMXyD7">Get Directions</a>
+                <br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/dr-k-satish-ophthalmologist?practice_id=1014203&specialization=Ophthalmologist&referrer=doctor_listing&page_uid=1e011c04-73b3-4994-8342-d50fd5f3da72">More
+                    Information</a>
+            </div>
+        </div>
+        <div class="doctor-card">
+            <div class="doctor-photo">
+                <img src="https://imagesx.practo.com/providers/dr-raghu-rao-ophthalmologist-eye-surgeon-bangalore-0737c562-f14b-4d8a-a41f-f3d59dfbc602.jpg?i_type=t_70x70"
+                    alt="Doctor Photo">
+            </div>
+            <div class="doctor-details">
+                <h2>Dr. Raghu Rao</h2>
+                <p>Ophthalmologist/ Eye Surgeon</p>
+                <p><b>Dr. Agarwal's Eye Hopital</b></p>
+                <p><b>Tel-Phone:</b> 080-48193490</p>
+                <p><b>Address:</b> No. 1792, Ward No.18, Adhichuchunagiri Road, Mysore</p>
+                <a href="https://maps.app.goo.gl/S5gqJ8SA5gXdM24p9">Get Directions</a>
+                <br><br>
+                <a
+                    href="https://www.practo.com/mysore/doctor/dr-raghu-rao-ophthalmologist?practice_id=1183125&specialization=Ophthalmologist&referrer=doctor_listing&page_uid=1e011c04-73b3-4994-8342-d50fd5f3da72">More
+                    Information</a>
+            </div>
+        </div>
+
+        <!-- Your doctor cards go here -->
+    </div>
+
+    <!--<footer>
+    <p>&copy; 2024 DoctorCare. All rights reserved.</p>
+</footer> -->
+</body>
+
+</html>

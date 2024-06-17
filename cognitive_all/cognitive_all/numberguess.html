@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Numbers</title>
+    <style>
+        body {
+            background: linear-gradient(67.6deg, rgb(225, 242, 254) -2.8%, rgb(193, 224, 250) 44.6%, rgb(19, 116, 197) 102.4%);
+            background-size: cover;
+            background-size: cover;
+        }
+
+        .hi {
+            padding: 40px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+
+        .calci {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            background-color: rgb(211, 211, 46);
+            margin: 7px;
+            height: 50px;
+            width: 50px;
+            box-shadow: 5px;
+        }
+
+        .button1 {
+            height: 50px;
+            width: 75px;
+            background-color: rgb(71, 71, 231);
+            margin: 7px;
+        }
+
+        #Newgame,
+        #submitButton,
+        #NextBtn {
+            height: 40px;
+            width: 75px;
+            background-color: rgb(225, 47, 47);
+        }
+
+        .row {
+            margin: 10px;
+            display: flex;
+        }
+
+        .row1 {
+            display: flex;
+            padding: 5px;
+        }
+
+        .display {
+            border: 5px solid #000;
+            margin: 10px auto;
+            text-align: center;
+            font-size: 24px;
+            height: 50px;
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 style="text-align: center;">Digits Memory Test</h1>
+    </div>
+    <hr style="border:2px solid #000;">
+    <div class="hi">
+        <div>
+            <h2 style="text-align: center;">Lets start the memory game</h2>
+            <h4 style="text-align: center;">Please enter the shown numbers in order</h4>
+        </div>
+
+        <div class="display" id="display">
+            <!-- Display area for numbers -->
+        </div>
+        <div class="calci">
+            <div class="row">
+                <button class="button" value="1" onclick="appendToDisplay('1')">1</button>
+                <button class="button" value="2" onclick="appendToDisplay('2')">2</button>
+                <button class="button" value="3" onclick="appendToDisplay('3')">3</button>
+            </div>
+            <div class="row">
+                <button class="button" value="4" onclick="appendToDisplay('4')">4</button>
+                <button class="button" value="5" onclick="appendToDisplay('5')">5</button>
+                <button class="button" value="6" onclick="appendToDisplay('6')">6</button>
+            </div>
+            <div class="row">
+                <button class="button" value="7" onclick="appendToDisplay('7')">7</button>
+                <button class="button" value="8" onclick="appendToDisplay('8')">8</button>
+                <button class="button" value="9" onclick="appendToDisplay('9')">9</button>
+            </div>
+            <div class="row1">
+                <button class="button1" onclick="resetDisplay()">Reset</button>
+                <button class="button1" type="submit" onclick="speedDisplay()">Speed</button>
+                <button class="button1" type="submit" onclick="slowDisplay()">Slow</button>
+            </div>
+            <div class="row2">
+                <button id="submitButton" type="submit" onclick="checkAnswer()">Submit</button>
+                <button id="Newgame" type="submit" onclick="newgame()">Newgame</button>
+                <button id="NextBtn" onclick="window.location.href='dateinstruct.html'">Next</button>
+            </div>
+        </div>
+        <p id="score" style="font-size: 30px;padding-left: 30%;"></p>
+    </div>
+</body>
+<script>
+    const displayArea = document.getElementById("display");
+    const wordList = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    let iteration = 0;
+    let displayed = "";
+    let list = "";
+    let interval; // Define the interval globally
+
+    function displayRandomNumber() {
+        if (iteration < 5) {
+            let randomNumber;
+            do {
+                randomNumber = Math.floor(Math.random() * wordList.length);
+            } while (wordList[randomNumber] === displayed.charAt(displayed.length - 1)); // Check if the newly generated number is the same as the previous one
+
+            displayArea.textContent = wordList[randomNumber];
+            displayed += displayArea.textContent;
+            iteration++;
+        } else {
+            clearInterval(interval); // Clear the interval after displaying 5 numbers
+            displayArea.textContent = ""; // Clear the display
+            iteration = 0; // Reset iteration for the next game
+        }
+    }
+
+
+    function newgame() {
+        resetgame()
+        clearInterval(interval); // Clear any existing interval
+        interval = setInterval(displayRandomNumber, 1000); // Start a new game
+    }
+
+    function speedDisplay() {
+        clearInterval(interval); // Clear any existing interval
+        interval = setInterval(displayRandomNumber, 500); // Start a new game with faster speed
+    }
+
+    function slowDisplay() {
+        clearInterval(interval); // Clear any existing interval
+        interval = setInterval(displayRandomNumber, 2000); // Start a new game with slower speed
+    }
+
+    function appendToDisplay(value) {
+        displayArea.textContent += value;
+        list += value;
+    }
+
+    function resetDisplay() {
+        displayArea.textContent = "";
+    }
+
+    function resetgame() {
+        displayArea.textContent = "";
+        list = "";
+        displayed = ""
+
+    }
+
+    function checkAnswer() {
+        const scoreDisplay = document.getElementById("score");
+        let correctGuesses = 0;
+
+        for (let i = 0; i < displayed.length && i < list.length; i++) {
+            if (displayed[i] === list[i]) {
+                correctGuesses++;
+            }
+        }
+        const accuracy = (correctGuesses / displayed.length) * 100;
+        scoreDisplay.innerHTML = `<strong>Accuracy: ${accuracy.toFixed(2)}% Correct answer:${displayed} </strong> `;
+        resetgame();
+
+        const answers = localStorage.getItem("X-cognitive")
+
+        if (!answers) {
+            window.location.href = "questions.html"
+        } else {
+            localStorage.setItem("X-cognitive", JSON.stringify({
+                ...JSON.parse(answers),
+                numberguess_avg: `${accuracy}`
+            }))
+        }
+    }
+
+</script>
+
+</html>
